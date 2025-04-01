@@ -6,15 +6,16 @@ public class CoreJavaBrushups3 {
 		
 		String s = "Jose Omar Cavazos";
 		System.out.println(s);
-		//Remove "Omar" [1] from string
+		
+
+		//Remove word "Omar" [1] from string
 		String[] splittedString = s.split("Omar");
-		
-		System.out.println(splittedString);
-		
-		
+
+
 		System.out.println(splittedString[0]);
 		System.out.println(splittedString[1]);
 		
+		//removes blank spaces
 		System.out.println(splittedString[1].trim());
 		
 		for(int i= s.length()-1; i >= 0; i--) {
