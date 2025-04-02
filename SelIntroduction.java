@@ -33,9 +33,10 @@ public class SelIntroduction {
         System.out.println(driver.getCurrentUrl());
         
         // Retrieve page source
-        String pageSource = driver.getPageSource();
-        System.out.println("Page Source: " + pageSource);
+//        String pageSource = driver.getPageSource();
+//        System.out.println("Page Source: " + pageSource);
 
+        
         
         
         Thread.sleep(2000); // Wait for 2 seconds
