@@ -20,11 +20,19 @@ public class Locators2 {
         driver.manage().window().maximize();
         //wait time for loading page
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+
+        //create variable password and assign it from getPassword method
+        String password = getPassword(driver);
+        
+        //Open website
         driver.get("https://rahulshettyacademy.com/locatorspractice/");
 
         //Variable name is used as InputUsername
         driver.findElement(By.id("inputUsername")).sendKeys(name);
-        driver.findElement(By.name("inputPassword")).sendKeys("rahulshettyacademy");       
+
+        //Variable password is used as InputPassword
+        driver.findElement(By.name("inputPassword")).sendKeys(password);       
+        
         driver.findElement(By.className("signInBtn")).click();
         
         //wait for login
@@ -39,10 +47,41 @@ public class Locators2 {
 
         //Log Out
         driver.findElement(By.xpath("//*[text()='Log Out']")).click();
-        
+
+		//wait
+		Thread.sleep(1000);
+
         //close browser
         driver.close();
 
 	}
 
+	public static String getPassword(WebDriver driver) throws InterruptedException
+	{
+		driver.get("https://rahulshettyacademy.com/locatorspractice/");
+		driver.findElement(By.linkText("Forgot your password?")).click();	
+		//wait
+		Thread.sleep(1000);
+		
+		//click on forgot password button
+        driver.findElement(By.cssSelector(".reset-pwd-btn")).click();
+
+        //put password into a Variable
+        String passwordText = driver.findElement(By.cssSelector("form p")).getText();
+        
+        //Message is displayed on screen "Please use temporary password 'rahulshettyacademy' to Login."
+        
+        //Array will be created using split
+        String [] passwordArray = passwordText.split("'");
+        //0th index = Please use temporary password
+        //1st index = 'rahulshettyacademy' to Login.
+        
+        //split Array second time and stored as password
+        String password = passwordArray[1].split("'")[0];
+        //0th index = rahulshettyacademy
+        //1st index = to Login.
+        
+        return password;
+        
+	}
 }

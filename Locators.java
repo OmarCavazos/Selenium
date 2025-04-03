@@ -33,6 +33,8 @@ public class Locators {
         driver.findElement(By.xpath("//input[@type='text'][2]")).clear();        
         driver.findElement(By.cssSelector("input[type='text']:nth-child(3)")).sendKeys("john@gmail.com");
         driver.findElement(By.xpath("//form/input[3]")).sendKeys("123456789");
+
+        //click on forgot password button
         driver.findElement(By.cssSelector(".reset-pwd-btn")).click();
         //Print temporary password message
         System.out.println(driver.findElement(By.cssSelector("form p")).getText());
