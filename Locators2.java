@@ -3,6 +3,8 @@ import java.time.Duration;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.Assert;
 
 public class Locators2 {
@@ -16,6 +18,16 @@ public class Locators2 {
 		//webdriver.chrome.Driver
     	System.setProperty("webdriver.chrome.driver", "C:\\Users\\omar_\\Downloads\\chromedriver-win64\\chromedriver.exe");
         WebDriver driver = new ChromeDriver();
+        
+        //Firefox Launch
+//        System.setProperty("webdriver.gecko.driver", "C:\\Users\\omar_\\Downloads\\geckodriver-v0.36.0-win64\\geckodriver.exe");
+//        WebDriver driver = new FirefoxDriver();
+        
+        //Edge Launch
+//        System.setProperty("webdriver.gecko.driver", "C:\\Users\\omar_\\Downloads\\edgedriver_win64\\edgedriver.exe");
+//        WebDriver driver = new EdgeDriver();
+        
+        
         // Maximize the browser window
         driver.manage().window().maximize();
         //wait time for loading page
