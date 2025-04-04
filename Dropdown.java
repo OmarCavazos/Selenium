@@ -29,9 +29,12 @@ public class Dropdown {
         
         //Select TO Bengaluru from second dropdown list
         
-        //driver.findElement(By.xpath("(//a[@value='MAA'])[2]")).click();                             
+        //driver.findElement(By.xpath("(//a[@value='MAA'])[2]")).click();
+
+        //Same as previous line but with absolute path
         driver.findElement(By.xpath("//div[@id='glsctl00_mainContent_ddl_destinationStation1_CTNR']//a[@value='MAA']")).click();
-        //driver.close();
+        
+        driver.close();
         
         
 	}
