@@ -1,9 +1,11 @@
 package eCommerce;
 
 import java.lang.reflect.Array;
+import java.security.PublicKey;
 import java.time.Duration;
 import java.util.Arrays;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 import java.util.jar.Attributes.Name;
 
 import org.openqa.selenium.By;
@@ -11,29 +13,50 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
-public class addItems {
-
+public class base {
+	
 	public static void main(String[] args) throws InterruptedException {
-		// TODO Auto-generated method stub
-		
-		//declare variables
-		String[] itemsNeeded = {"Cucumber", "Brocolli", "Tomato", "Beetroot"};
-		int j=0;
+		// TODO Auto-generated method stub		
+
+        String[] itemsNeeded = {"Cucumber", "Brocolli", "Tomato", "Beetroot", "Beans"};        
 		
 		//webdriver.chrome.Driver
 		WebDriver driver = new FirefoxDriver();
+		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 		
         // Maximize the browser window
-        driver.manage().window().maximize();
-        
+        driver.manage().window().maximize();        
         //wait time for loading page
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));        
+
         
         //Open URL
-        driver.get("https://rahulshettyacademy.com/seleniumPractise/");
+        driver.get("https://rahulshettyacademy.com/seleniumPractise/");        
+        Thread.sleep(1500);
+        addItems(driver, itemsNeeded);
+        
+        //checkout
+        driver.findElement(By.cssSelector("img[alt='Cart']")).click();
+        driver.findElement(By.xpath("//button[contains(text(),'PROCEED TO CHECKOUT')]")).click();
+        
+        //enter promo code
+        driver.findElement(By.cssSelector("input.promocode")).sendKeys("rahulshettyacademy");
+        driver.findElement(By.cssSelector("button.promoBtn")).click();
+        System.out.println(driver.findElement(By.cssSelector("span.promoInfo")).getText());        
         
         
-        //find all the items by name 
+        driver.close();      
+        
+
+	}
+	
+	
+    public static void addItems(WebDriver driver, String[] itemsNeeded)
+    {
+		//declare variables		
+		int j=0;
+    	
+    	//find all the items by name 
         List<WebElement> products = driver.findElements(By.cssSelector("h4.product-name"));        
         
         //find an specific item from array itemsNeeded using a loop
@@ -64,10 +87,6 @@ public class addItems {
 					
 			}
 		}
-        
-        //driver.close();      
-        
-
-	}
+    }
 
 }
